@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Food System</title>
+</head>
+<body>
+<div class="w-screen h-screen">
+  <div class="flex flex-col overflow-hidden h-full">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main class="flex h-full">
+      <section th:replace="~{fragments/sideBar :: sidebar}"></section>
+      <section class="flex flex-col w-full h-full p-6">
+        <h2>[[${pageTitle}]]</h2>
+        <form action="/save" th:object="${foodProduct}" method="post" class="h-full w-1/2 flex flex-col form-control">
+          <input type="hidden" th:field="*{id}"/>
+          <div class="label">
+            <label class="label-text" for="sku">SKU</label>
+          </div>
+          <input type="text" th:field="*{sku}" id="sku" class="input input-bordered">
+          <div class="label">
+            <label class="label-text" for="description">Description</label>
+          </div>
+          <input type="text" th:field="*{description}" id="description" class="input input-bordered">
+          <div class="label">
+            <label class="label-text" for="category">Category</label>
+          </div>
+          <input type="text" th:field="*{category}" id="category" class="input input-bordered">
+          <div class="label">
+            <label class="label-text" for="price">Price</label>
+          </div>
+          <input type="number" th:field="*{price}" id="price" class="input input-bordered">
+
+          <button type="submit" class="btn btn-neutral my-6">Update Food Product</button>
+        </form>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>

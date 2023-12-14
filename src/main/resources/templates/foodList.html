@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-theme="forest">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Food System</title>
+</head>
+<body>
+<div class="w-screen h-screen">
+  <div class="flex flex-col overflow-hidden h-full">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main class="flex h-full">
+      <section th:replace="~{fragments/sideBar :: sidebar}"></section>
+      <section class="flex flex-col w-full h-full p-6">
+        <div th:switch="${foodList}" class="h-full">
+          <div class="flex items-center justify-between p-4">
+            <h1>All Food Product</h1>
+            <button class="btn btn-neutral">
+              <a href="/addNewFood">add new food</a>
+            </button>
+          </div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="food : ${foodList}">
+              <td th:text="${food.sku}"></td>
+              <td th:text="${food.description}"></td>
+              <td th:text="${food.category}"></td>
+              <td th:text="${food.price}"></td>
+              <td>
+                <button class="btn btn-neutral">
+                  <a th:href="@{/updateFood/{id}(id=${food.id})}" title="Edit">Edit</a>
+                </button>
+                <button class="btn btn-error">
+                  <a th:href="@{/deleteFood/{id}(id=${food.id})}" title="Delete">Delete</a>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>

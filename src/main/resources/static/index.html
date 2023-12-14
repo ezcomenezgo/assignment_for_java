@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-theme="forest">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>The Wholesale System</title>
+</head>
+<body>
+<div class="w-screen h-screen">
+  <div class="flex flex-col overflow-hidden h-full">
+    <header th:fragment="header" class="flex bg-gray-800 p-4">
+      <div><a href="/">Wholesale System</a></div>
+    </header>
+    <main class="flex h-full">
+      <section th:fragment="sidebar" class="w-1/4 text-md m-4">
+        <div class="w-full p-6">
+          <ul class="menu w-56 rounded-box">
+            <li>
+              <a href="/foodList">Whole food</a>
+            </li>
+            <li>
+              <a href="/customer">Customer</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="flex flex-col w-full h-full p-4">
+        <div class="h-full">
+          Index page
+        </div>
+        <p class="footer footer-center text-gray-500 p-4">
+          &copy; 2023 Footer
+        </p>
+      </section>
+    </main>
+
+  </div>
+</div>
+</body>
+</html>

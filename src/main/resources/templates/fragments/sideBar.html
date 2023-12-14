@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Food Store</title>
+</head>
+<body>
+<section th:fragment="sidebar" class="w-1/4 text-md shadow-md shadow-slate-600">
+  <div class="w-full p-6">
+    <ul class="menu w-56 rounded-box">
+      <li>
+        <a href="/foodList">Whole food</a>
+      </li>
+      <li>
+        <a href="/customer">Customer</a>
+      </li>
+    </ul>
+  </div>
+</section>
+</body>
