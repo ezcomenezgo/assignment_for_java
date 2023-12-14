@@ -2,7 +2,6 @@ package com.example.wholesale_system;
 
 import com.example.wholesale_system.food_product.FoodProduct;
 import com.example.wholesale_system.food_product.FoodProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -117,12 +116,12 @@ public class WholesaleSystemApplication implements CommandLineRunner {
     public void addFoodProduct (String sku, String description, String category, int price) {
         try {
             FoodProduct foodProduct = new FoodProduct();
-            foodProduct.setSKU(sku);
+            foodProduct.setSku(sku);
             foodProduct.setDescription(description);
             foodProduct.setCategory(category);
             foodProduct.setPrice(price);
             foodProductService.saveFoodProduct(foodProduct);
-            System.out.println("added " + sku + "from database!");
+            System.out.println("added " + sku + " from database!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -131,7 +130,7 @@ public class WholesaleSystemApplication implements CommandLineRunner {
     public void updateFood(FoodProduct foodProduct, String sku, String description, String category, int price) {
         try {
             System.out.println("Before update: " + foodProduct.toString());
-            foodProduct.setSKU(sku);
+            foodProduct.setSku(sku);
             foodProduct.setDescription(description);
             foodProduct.setCategory(category);
             foodProduct.setPrice(price);

@@ -23,12 +23,12 @@ public class FoodProduct {
         this.id = id;
     }
 
-    public String getSKU() {
+    public String getSku() {
         return sku;
     }
 
-    public void setSKU(String SKU) {
-        this.sku = SKU;
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getDescription() {
