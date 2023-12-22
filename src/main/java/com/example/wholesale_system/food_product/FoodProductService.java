@@ -14,7 +14,10 @@ public class FoodProductService {
         this.foodProductRepository = foodProductRepository;
     }
 
-    public Iterable<FoodProduct> getFoodProductList() {
+    public Iterable<FoodProduct> getFoodProductList(String keyword) {
+        if (keyword != null) {
+            return foodProductRepository.search(keyword);
+        }
         return foodProductRepository.findAll();
     }
 

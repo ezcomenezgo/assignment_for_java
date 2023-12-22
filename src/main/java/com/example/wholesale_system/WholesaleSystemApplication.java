@@ -93,7 +93,7 @@ public class WholesaleSystemApplication implements CommandLineRunner {
 
     public void getFoodList() {
         try {
-            Iterable<FoodProduct> foodProducts = foodProductService.getFoodProductList();
+            Iterable<FoodProduct> foodProducts = foodProductService.getFoodProductList("");
             for (FoodProduct foodProduct : foodProducts) {
                 System.out.println(foodProduct);
             }
@@ -113,7 +113,7 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         }
     }
 
-    public void addFoodProduct (String sku, String description, String category, int price) {
+    public void addFoodProduct(String sku, String description, String category, int price) {
         try {
             FoodProduct foodProduct = new FoodProduct();
             foodProduct.setSku(sku);

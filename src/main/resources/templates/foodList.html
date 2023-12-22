@@ -15,10 +15,20 @@
       <section class="flex flex-col w-full h-full p-6">
         <div th:switch="${foodList}" class="h-full">
           <div class="flex items-center justify-between p-4">
-            <h1>All Food Product</h1>
-            <button class="btn btn-neutral">
-              <a href="/addNewFood">add new food</a>
-            </button>
+            <h1 class="text-2xl">All Food Product</h1>
+            <div class="flex space-x-4">
+              <button class="btn btn-neutral">
+                <a href="/addNewFood">add new food</a>
+              </button>
+              <form action="/foodList" method="get" class="flex space-x-4">
+                <input type="text" name="keyword" id="keyword" th:value="${keyword}"
+                       placeholder="Search food..."
+                       class="input input-bordered input-primary w-full max-w-xs">
+                <button type="submit" class="btn btn-outline btn-info">
+                  Search
+                </button>
+              </form>
+            </div>
           </div>
           <table class="table">
             <thead>
@@ -32,10 +42,10 @@
             </thead>
             <tbody>
             <tr th:each="food : ${foodList}">
-              <td th:text="${food.sku}"></td>
-              <td th:text="${food.description}"></td>
-              <td th:text="${food.category}"></td>
-              <td th:text="${food.price}"></td>
+              <td th:text="${food.getSku()}"></td>
+              <td th:text="${food.getDescription()}"></td>
+              <td th:text="${food.getCategory()}"></td>
+              <td th:text="${food.getPrice()}"></td>
               <td>
                 <button class="btn btn-neutral">
                   <a th:href="@{/updateFood/{id}(id=${food.id})}" title="Edit">Edit</a>

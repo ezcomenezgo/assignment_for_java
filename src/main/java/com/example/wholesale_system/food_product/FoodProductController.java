@@ -1,5 +1,6 @@
 package com.example.wholesale_system.food_product;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,11 +45,11 @@ public class FoodProductController {
         return "redirect:foodList";
     }
 
-    @GetMapping ("/foodList")
-    public String getFoodList(Model model) {
-        Iterable<FoodProduct> foodList = foodProductService.getFoodProductList();
+    @GetMapping("/foodList")
+    public String getFoodList(Model model, @Param("keyword") String keyword) {
+        Iterable<FoodProduct> foodList = foodProductService.getFoodProductList(keyword);
         model.addAttribute("foodList", foodList);
-        System.out.println(foodProductService.getFoodProductList().toString());
+        model.addAttribute("keyword", keyword);
         return "foodList";
     }
 }
