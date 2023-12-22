@@ -9,11 +9,12 @@
 <body>
 <div class="w-screen h-screen">
   <div class="flex flex-col overflow-hidden h-full">
-    <header th:fragment="header" class="flex bg-gray-800 p-4">
+    <header class="flex justify-between bg-gray-800 p-4">
       <div><a href="/">Wholesale System</a></div>
+      <div><a href="/login">Log out</a></div>
     </header>
     <main class="flex h-full">
-      <section th:fragment="sidebar" class="w-1/4 text-md m-4">
+      <section class="w-1/4 text-md shadow-md shadow-slate-600">
         <div class="w-full p-6">
           <ul class="menu w-56 rounded-box">
             <li>
