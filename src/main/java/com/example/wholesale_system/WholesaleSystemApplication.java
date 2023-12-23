@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
 
+/**
+ * Entry point of the application
+ */
 @SpringBootApplication
 public class WholesaleSystemApplication implements CommandLineRunner {
 
@@ -21,6 +24,12 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         SpringApplication.run(WholesaleSystemApplication.class, args);
     }
 
+    /**
+     * implement console menu after the application running
+     *
+     * @param args: arguments
+     * @throws Exception: if there's api exception it would be thrown
+     */
     @Override
     public void run(String... args) throws Exception {
         String selection;
@@ -91,6 +100,9 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         } while (!selection.equals("6"));
     }
 
+    /**
+     * get all food products
+     */
     public void getFoodList() {
         try {
             Iterable<FoodProduct> foodProducts = foodProductService.getFoodProductList("");
@@ -102,6 +114,11 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         }
     }
 
+    /**
+     * find specific food product
+     *
+     * @param id: enter id of food to find the food product
+     */
     public void getFoodById(int id) {
         try {
             FoodProduct foodProduct = foodProductService.findFoodById(id);
@@ -113,6 +130,14 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         }
     }
 
+    /**
+     * add a new food product
+     *
+     * @param sku:         food product's sku
+     * @param description: food product's description
+     * @param category:    food product's category
+     * @param price:       food product's price
+     */
     public void addFoodProduct(String sku, String description, String category, int price) {
         try {
             FoodProduct foodProduct = new FoodProduct();
@@ -127,6 +152,15 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         }
     }
 
+    /**
+     * update the food product
+     *
+     * @param foodProduct: the food product that user want to update
+     * @param sku:         food product's sku
+     * @param description: food product's description
+     * @param category:    food product's category
+     * @param price:       food product's price
+     */
     public void updateFood(FoodProduct foodProduct, String sku, String description, String category, int price) {
         try {
             System.out.println("Before update: " + foodProduct.toString());
@@ -141,6 +175,11 @@ public class WholesaleSystemApplication implements CommandLineRunner {
         }
     }
 
+    /**
+     * delete the specific food product
+     *
+     * @param id: enter id of food to delete the food product
+     */
     public void deleteFoodById(int id) {
         try {
             FoodProduct foodProduct = foodProductService.findFoodById(id);

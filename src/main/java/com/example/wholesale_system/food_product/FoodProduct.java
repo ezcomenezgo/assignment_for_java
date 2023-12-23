@@ -5,6 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * class of food product
+ * the properties contain id, sku, description, category, price
+ * also there are setter and getter of properties
+ */
 @Entity
 public class FoodProduct {
     @Id
@@ -55,6 +60,11 @@ public class FoodProduct {
         this.price = price;
     }
 
+    /**
+     * Override toString() to print food product
+     *
+     * @return: information of food product in string
+     */
     @Override
     public String toString() {
         return "Product={id=" + id +

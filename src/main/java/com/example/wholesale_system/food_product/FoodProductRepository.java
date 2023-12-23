@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * DAO of food products
+ */
 @Repository
 public interface FoodProductRepository extends CrudRepository<FoodProduct, Integer> {
     @Query("SELECT f FROM FoodProduct f WHERE CONCAT(f.category, f.description, f.price, f.sku) LIKE %?1%")

@@ -5,6 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * class of user
+ * the properties contain id, username, password
+ * also there are setter and getter of properties
+ */
 @Entity
 public class Users {
     @Id
@@ -37,6 +42,11 @@ public class Users {
         this.password = password;
     }
 
+    /**
+     * Override toString() to print user
+     *
+     * @return: information of user in string
+     */
     @Override
     public String toString() {
         return "User={id=" + id +

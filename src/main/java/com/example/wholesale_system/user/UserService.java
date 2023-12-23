@@ -2,6 +2,9 @@ package com.example.wholesale_system.user;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * service of user
+ */
 @Service
 public class UserService {
     private final UserRepository userRepository;

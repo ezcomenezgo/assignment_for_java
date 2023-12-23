@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * service of food product
+ */
 @Service
 public class FoodProductService {
     private final FoodProductRepository foodProductRepository;
