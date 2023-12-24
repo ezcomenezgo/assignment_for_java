@@ -1,5 +1,7 @@
 package com.example.wholesale_system;
 
+import com.example.wholesale_system.customer.Customer;
+import com.example.wholesale_system.customer.CustomerService;
 import com.example.wholesale_system.food_product.FoodProduct;
 import com.example.wholesale_system.food_product.FoodProductService;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +17,11 @@ import java.util.Scanner;
 public class WholesaleSystemApplication implements CommandLineRunner {
 
     private final FoodProductService foodProductService;
+    private final CustomerService customerService;
 
-    public WholesaleSystemApplication(FoodProductService foodProductService) {
+    public WholesaleSystemApplication(FoodProductService foodProductService, CustomerService customerService) {
         this.foodProductService = foodProductService;
+        this.customerService = customerService;
     }
 
     public static void main(String[] args) {
@@ -45,7 +49,12 @@ public class WholesaleSystemApplication implements CommandLineRunner {
             System.out.println("[3] Add a new product");
             System.out.println("[4] Update a product by ID");
             System.out.println("[5] Delete a product by ID");
-            System.out.println("[6] Exit");
+            System.out.println("[6] List all customer");
+            System.out.println("[7] Search for customer by ID");
+            System.out.println("[8] Add a new customer");
+            System.out.println("[9] Update a customer by ID");
+            System.out.println("[10] Delete a customer by ID");
+            System.out.println("[11] Exit");
 
             selection = in.nextLine();
             switch (selection) {
@@ -89,15 +98,71 @@ public class WholesaleSystemApplication implements CommandLineRunner {
                     }
                     break;
                 case "5":
-                    System.out.println("\n\nEnter Product ID that you want to delete");
+                    System.out.println("\nEnter Product ID that you want to delete");
                     int idToDelete = Integer.parseInt(in.nextLine());
                     deleteFoodById(idToDelete);
                     break;
                 case "6":
+                    getAllCustomer();
+                    break;
+                case "7":
+                    System.out.println("\nEnter Customer ID that you want to find");
+                    int customerIdToFind = Integer.parseInt(in.nextLine());
+                    getCustomerById(customerIdToFind);
+                    break;
+                case "8":
+                    System.out.println("\nPlease enter customer name");
+                    String nameToAdd = in.nextLine();
+                    System.out.println("\nPlease enter customer address line 1");
+                    String addressLine1ToAdd = in.nextLine();
+                    System.out.println("\nPlease enter customer address line 2");
+                    String addressLine2ToAdd = in.nextLine();
+                    System.out.println("\nPlease enter customer address line 3");
+                    String addressLine3ToAdd = in.nextLine();
+                    System.out.println("\nPlease enter customer post code");
+                    String postCodeToAdd = in.nextLine();
+                    System.out.println("\nPlease enter customer country");
+                    String countryToAdd = in.nextLine();
+                    System.out.println("\nPlease enter customer telephone");
+                    String telephoneToAdd = in.nextLine();
+                    addCustomer(nameToAdd, addressLine1ToAdd, addressLine2ToAdd, addressLine3ToAdd, postCodeToAdd, countryToAdd, telephoneToAdd);
+                    break;
+                case "9":
+                    System.out.println("\nEnter Customer ID that you want to update");
+                    int customerIdToUpdate = Integer.parseInt(in.nextLine());
+                    try {
+                        Customer customer = customerService.findCustomerById(customerIdToUpdate);
+                        if (customer != null) {
+                            System.out.println("\nPlease enter customer name");
+                            String nameToUpdate = in.nextLine();
+                            System.out.println("\nPlease enter customer address line 1");
+                            String addressLine1ToUpdate = in.nextLine();
+                            System.out.println("\nPlease enter customer address line 2");
+                            String addressLine2ToUpdate = in.nextLine();
+                            System.out.println("\nPlease enter customer address line 3");
+                            String addressLine3ToUpdate = in.nextLine();
+                            System.out.println("\nPlease enter customer post code");
+                            String postCodeToUpdate = in.nextLine();
+                            System.out.println("\nPlease enter customer country");
+                            String countryToUpdate = in.nextLine();
+                            System.out.println("\nPlease enter customer telephone");
+                            String telephoneToUpdate = in.nextLine();
+                            updateCustomer(customer, nameToUpdate, addressLine1ToUpdate, addressLine2ToUpdate, addressLine3ToUpdate, postCodeToUpdate, countryToUpdate, telephoneToUpdate);
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case "10":
+                    System.out.println("\nEnter Customer ID that you want to delete");
+                    int customerIdToDelete = Integer.parseInt(in.nextLine());
+                    deleteCustomerById(customerIdToDelete);
+                    break;
+                case "11":
                     System.out.println("Bye Bye! See you!");
                     break;
             }
-        } while (!selection.equals("6"));
+        } while (!selection.equals("11"));
     }
 
     /**
@@ -186,6 +251,141 @@ public class WholesaleSystemApplication implements CommandLineRunner {
             if (foodProduct != null) {
                 foodProductService.deleteFoodProduct(id);
                 System.out.println("delete " + foodProduct.getDescription() + " from database!");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * get all customers
+     */
+    public void getAllCustomer() {
+        try {
+            Iterable<Customer> customers = customerService.getCustomerList("");
+            for (Customer customer : customers) {
+                System.out.println(customer);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * find specific customer
+     *
+     * @param id: enter id of customer to find the customer
+     */
+    public void getCustomerById(int id) {
+        try {
+            Customer customer = customerService.findCustomerById(id);
+            if (customer != null) {
+                System.out.println(customer);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * add a new customer
+     *
+     * @param businessName:    customer's name
+     * @param addressLine1:    customer's address line 1
+     * @param addressLine2:    customer's address line 2
+     * @param addressLine3:    customer's address line 3
+     * @param postCode:        customer's address post code
+     * @param country:         customer's address country
+     * @param telephoneNumber: customer's telephone number
+     */
+    public void addCustomer(
+            String businessName,
+            String addressLine1,
+            String addressLine2,
+            String addressLine3,
+            String postCode,
+            String country,
+            String telephoneNumber
+    ) {
+        try {
+            Customer newCustomer = new Customer();
+            saveCustomer(newCustomer, businessName, addressLine1, addressLine2, addressLine3, postCode, country, telephoneNumber);
+            System.out.println("added " + businessName + " to database!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * update the new customer
+     *
+     * @param customer:        the customer that user want to update
+     * @param businessName:    customer's name
+     * @param addressLine1:    customer's address line 1
+     * @param addressLine2:    customer's address line 2
+     * @param addressLine3:    customer's address line 3
+     * @param postCode:        customer's address post code
+     * @param country:         customer's address country
+     * @param telephoneNumber: customer's telephone number
+     */
+    public void updateCustomer(
+            Customer customer,
+            String businessName,
+            String addressLine1,
+            String addressLine2,
+            String addressLine3,
+            String postCode,
+            String country,
+            String telephoneNumber
+    ) {
+        try {
+            System.out.println("Before update: " + customer.toString());
+            saveCustomer(customer, businessName, addressLine1, addressLine2, addressLine3, postCode, country, telephoneNumber);
+            System.out.println("After update: " + customer.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * save the customer
+     *
+     * @param customer:        the customer need to be saved
+     * @param businessName:    customer's name
+     * @param addressLine1:    customer's address line 1
+     * @param addressLine2:    customer's address line 2
+     * @param addressLine3:    customer's address line 3
+     * @param postCode:        customer's address post code
+     * @param country:         customer's address country
+     * @param telephoneNumber: customer's telephone number
+     */
+    public void saveCustomer(
+            Customer customer,
+            String businessName,
+            String addressLine1,
+            String addressLine2,
+            String addressLine3,
+            String postCode,
+            String country,
+            String telephoneNumber
+    ) {
+        customer.setBusinessName(businessName);
+        customer.setAddress(addressLine1, addressLine2, addressLine3, postCode, country);
+        customer.setTelephoneNumber(telephoneNumber);
+        customerService.saveCustomer(customer);
+    }
+
+    /**
+     * delete the specific customer
+     *
+     * @param id: enter id of customer to delete the customer
+     */
+    public void deleteCustomerById(int id) {
+        try {
+            Customer customer = customerService.findCustomerById(id);
+            if (customer != null) {
+                customerService.deleteCustomer(id);
+                System.out.println("delete " + customer.getBusinessName() + " from database!");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
