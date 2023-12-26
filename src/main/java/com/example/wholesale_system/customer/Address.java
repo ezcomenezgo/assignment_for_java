@@ -67,4 +67,12 @@ public class Address {
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

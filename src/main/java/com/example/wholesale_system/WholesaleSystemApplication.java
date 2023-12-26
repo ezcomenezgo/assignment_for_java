@@ -1,5 +1,6 @@
 package com.example.wholesale_system;
 
+import com.example.wholesale_system.customer.Address;
 import com.example.wholesale_system.customer.Customer;
 import com.example.wholesale_system.customer.CustomerService;
 import com.example.wholesale_system.food_product.FoodProduct;
@@ -309,6 +310,8 @@ public class WholesaleSystemApplication implements CommandLineRunner {
     ) {
         try {
             Customer newCustomer = new Customer();
+            Address address = new Address();
+            newCustomer.setAddress(address);
             saveCustomer(newCustomer, businessName, addressLine1, addressLine2, addressLine3, postCode, country, telephoneNumber);
             System.out.println("added " + businessName + " to database!");
         } catch (Exception e) {
@@ -370,7 +373,11 @@ public class WholesaleSystemApplication implements CommandLineRunner {
             String telephoneNumber
     ) {
         customer.setBusinessName(businessName);
-        customer.setAddress(addressLine1, addressLine2, addressLine3, postCode, country);
+        customer.getAddress().setAddressLine1(addressLine1);
+        customer.getAddress().setAddressLine2(addressLine2);
+        customer.getAddress().setAddressLine3(addressLine3);
+        customer.getAddress().setPostCode(postCode);
+        customer.getAddress().setCountry(country);
         customer.setTelephoneNumber(telephoneNumber);
         customerService.saveCustomer(customer);
     }

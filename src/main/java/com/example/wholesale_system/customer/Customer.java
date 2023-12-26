@@ -38,21 +38,8 @@ public class Customer {
         return address;
     }
 
-    public void setAddress(
-            String addressLine1,
-            String addressLine2,
-            String addressLine3,
-            String postCode,
-            String country
-    ) {
-        Address newAddress = new Address();
-        newAddress.setAddressLine1(addressLine1);
-        newAddress.setAddressLine2(addressLine2);
-        newAddress.setAddressLine3(addressLine3);
-        newAddress.setPostCode(postCode);
-        newAddress.setCountry(country);
-
-        this.address = newAddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getTelephoneNumber() {

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-theme="forest">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Customer System</title>
+</head>
+<body>
+<div class="w-screen h-screen">
+  <div class="flex flex-col overflow-hidden h-full">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main class="flex h-full">
+      <section th:replace="~{fragments/sideBar :: sidebar}"></section>
+      <section class="flex flex-col w-full h-full p-6">
+        <div th:switch="${customerList}" class="h-full">
+          <div class="flex items-center justify-between p-4">
+            <h1 class="text-2xl">All Customers</h1>
+            <div class="flex space-x-4">
+              <button class="btn btn-neutral">
+                <a href="/addNewCustomer">add new customer</a>
+              </button>
+              <form action="/customerList" method="get" class="flex space-x-4">
+                <input type="text" name="keyword" id="keyword" th:value="${keyword}"
+                       placeholder="Search customer..."
+                       class="input input-bordered input-primary w-full max-w-xs">
+                <button type="submit" class="btn btn-outline btn-info">
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Business Name</th>
+              <th>Address</th>
+              <th>Telephone</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customerList}">
+              <td th:text="${customer.getBusinessName()}"></td>
+              <td th:text="${
+                customer.getAddress().getAddressLine1() + ' ' +
+                customer.getAddress().getAddressLine2() + ' ' +
+                customer.getAddress().getAddressLine3() + ', ' +
+                customer.getAddress().getPostCode() + ', ' +
+                customer.getAddress().getCountry()
+              }"></td>
+              <td th:text="${customer.getTelephoneNumber()}"></td>
+              <td>
+                <button class="btn btn-neutral">
+                  <a th:href="@{/updateCustomer/{id}(id=${customer.id})}" title="Edit">Edit</a>
+                </button>
+                <button class="btn btn-error">
+                  <a th:href="@{/deleteCustomer/{id}(id=${customer.id})}" title="Delete">Delete</a>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
