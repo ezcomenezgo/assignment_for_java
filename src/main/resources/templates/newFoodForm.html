@@ -15,7 +15,7 @@
     <main class="flex h-full">
       <section th:replace="~{fragments/sideBar :: sidebar}"></section>
       <section class="flex flex-col w-full h-full p-6">
-        <h2>[[${pageTitle}]]</h2>
+        <h2 class="text-2xl">[[${pageTitle}]]</h2>
         <form action="/save" th:object="${foodProduct}" method="post" class="h-full w-1/2 flex flex-col form-control">
           <div class="label">
             <label class="label-text" for="sku">SKU</label>

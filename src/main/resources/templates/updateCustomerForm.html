@@ -15,7 +15,7 @@
     <main class="flex h-full">
       <section th:replace="~{fragments/sideBar :: sidebar}"></section>
       <section class="flex flex-col w-full h-full p-6">
-        <h2>[[${pageTitle}]]</h2>
+        <h2 class="text-2xl">[[${pageTitle}]]</h2>
         <form action="/saveCustomer" th:object="${customer}" method="post"
               class="h-full w-1/2 flex flex-col form-control">
           <input type="hidden" th:field="*{id}"/>
@@ -27,12 +27,14 @@
           <div class="label">
             <label class="label-text" for="addressLine1">Address</label>
           </div>
-          <input type="text" th:field="*{address.addressLine1}" id="addressLine1" class="input input-bordered"
-                 placeholder="Address Line 1">
-          <input type="text" th:field="*{address.addressLine2}" id="addressLine2" class="input input-bordered"
-                 placeholder="Address Line 2">
-          <input type="text" th:field="*{address.addressLine3}" id="addressLine3" class="input input-bordered"
-                 placeholder="Address Line 3">
+          <div class="flex flex-col space-y-4">
+            <input type="text" th:field="*{address.addressLine1}" id="addressLine1" class="input input-bordered"
+                   placeholder="Address Line 1">
+            <input type="text" th:field="*{address.addressLine2}" id="addressLine2" class="input input-bordered"
+                   placeholder="Address Line 2">
+            <input type="text" th:field="*{address.addressLine3}" id="addressLine3" class="input input-bordered"
+                   placeholder="Address Line 3">
+          </div>
 
           <div class="label">
             <label class="label-text" for="postCode">Post Code</label>
