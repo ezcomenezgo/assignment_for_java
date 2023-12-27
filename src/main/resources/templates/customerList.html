@@ -1,3 +1,5 @@
+<!-- Student name: Jia-Wen Li  Student number: 23628542 -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" data-theme="forest">
 <head>
@@ -20,14 +22,6 @@
               <button class="btn btn-neutral">
                 <a href="/addNewCustomer">add new customer</a>
               </button>
-              <form action="/customerList" method="get" class="flex space-x-4">
-                <input type="text" name="keyword" id="keyword" th:value="${keyword}"
-                       placeholder="Search customer..."
-                       class="input input-bordered input-primary w-full max-w-xs">
-                <button type="submit" class="btn btn-outline btn-info">
-                  Search
-                </button>
-              </form>
             </div>
           </div>
           <table class="table">

@@ -1,3 +1,5 @@
+// Student name: Jia-Wen Li  Student number: 23628542
+
 package com.example.wholesale_system;
 
 import com.example.wholesale_system.customer.Address;
@@ -263,7 +265,7 @@ public class WholesaleSystemApplication implements CommandLineRunner {
      */
     public void getAllCustomer() {
         try {
-            Iterable<Customer> customers = customerService.getCustomerList("");
+            Iterable<Customer> customers = customerService.getCustomerList();
             for (Customer customer : customers) {
                 System.out.println(customer);
             }

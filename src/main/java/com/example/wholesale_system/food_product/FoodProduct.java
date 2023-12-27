@@ -1,3 +1,5 @@
+// Student name: Jia-Wen Li  Student number: 23628542
+
 package com.example.wholesale_system.food_product;
 
 import jakarta.persistence.Entity;
