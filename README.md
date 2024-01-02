@@ -1,64 +1,72 @@
-## Project's Title: Wholesale system
+## Wholesale system
 
-## Project's description:
-
-- A web-based wholesale stock control system for food products.
+- A web-based wholesale stock control system for food products and customers.
 - The system allows to do **CRUD** of food products (id, SKU, description, category, price) from SQLite DB.
-- The system allows have to do **CRUD** of business customers (business name, address, telephone) from SQLite DB.
-- The system allows to search food products by description
+- The system allows us to do **CRUD** of business customers (business name, address, telephone number) from SQLite DB.
+- The system allows one to search food products by description.
 - Technology used:
 
     - Java: Spring boot
-    - Html: Thymeleaf
+    - HTML: Thymeleaf
     - CSS: Tailwind CSS/ daisyUI
 
-## How to Install and Run the Project
+## Prerequisite
 
 Step 1: Install Maven
 
 - On Windows:
-    1. Download Maven Binary zip file
+    1. Download the Maven Binary zip file.
     2. Setting environmentally variable
-    3. check maven version with `man -v` to check installation successful or not
-    4. for more info can refer this step-by-step instruction: https://phoenixnap.com/kb/install-maven-windows
+    3. Check the Maven version with `mvn -v` to check whether the installation is successful.
+    4. For more info can refer to this step-by-step instruction: https://phoenixnap.com/kb/install-maven-windows
 - On macOS
-    1. Install Homwbrew(Package Manager for macOS)
+    1. Install Homebrew(Package Manager for macOS)
        with `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
     2. Install Maven with `brew install maven`
 
-Step 2: Run the Project
+## How to Run the Project
 
-- `mvn spring-boot:run`
+### Run Spring boot application
 
-## How to Use the Project
+```shell
+mvn spring-boot:run
+```
 
-#### For Console Menu
+### Running on console
 
-Enter number of option to choose which function you want to test
+After you run the application, you'll see the following screen:
+![img.png](doc/img.png)
 
-#### For Web Functionality
+Enter the number of options to choose which function you want to test
+
+### Running on web
+
+After you run the application, following the steps below:
 
 1. Please start with this URL: http://localhost:8080/login
-2. login username and password is:
+2. login username and password are:
     - username: test001
     - password: test001
-3. There's a sidebar to choose go to food product or customer system
-4. Then you can start to create, edit, delete, read and search food products
-5. Also, you can start to create, edit, delete, and read customers
 
 ## Folder Structure
 
-- Project's Instruction: wholesale_system/README.md
-- Food Products: wholesale_system/src/main/java/com/example/wholesale_system/food_product
-- Customers: wholesale_system/src/main/java/com/example/wholesale_system/customer
-- Html: wholesale_system/src/main/resources
-- Tests of Classes: wholesale_system/src/test/java/com/example/wholesale_system
+- **Project's Instruction:** *wholesale_system/README.md*
+- **Food Products:** *wholesale_system/src/main/java/com/example/wholesale_system/food_product*
+- **Customers:** *wholesale_system/src/main/java/com/example/wholesale_system/customer*
+- **HTML:** *wholesale_system/src/main/resources*
+- **Database:** *wholesale_system/src/database/wholesale_system.db (The data is hardcoded, all the data will be prepared
+  in advance)*
+- **Unit tests:** *wholesale_system/src/test/java/com/example/wholesale_system*
 
 ## Credits
 
-Thanks so much for the documentations of Spring, Springboot, Thymeleaf and daisyUI to let me learn to do a basic
-fullstack project.
+Thanks so much for Dr. Conor taught us the Java programme language, the concept of OOP and others knowledge about
+developing a project.
+
+Also, thanks so much for the documentation of Spring, Springboot, Thymeleaf and TailwindCSS/daisyUI to let me learn how
+to do a basic full stack project.
 
 - Spring/ Spring boot: https://spring.io/guides/gs/spring-boot/
 - Thymeleaf: https://www.thymeleaf.org/documentation.html
+- Tailwind: https://tailwindcss.com/
 - daisyUI: https://daisyui.com/
