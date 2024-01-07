@@ -49,12 +49,16 @@
               <td th:text="${food.getCategory()}"></td>
               <td th:text="${food.getPrice()}"></td>
               <td>
-                <button class="btn btn-neutral">
-                  <a th:href="@{/updateFood/{id}(id=${food.id})}" title="Edit">Edit</a>
-                </button>
-                <button class="btn btn-error">
-                  <a th:href="@{/deleteFood/{id}(id=${food.id})}" title="Delete">Delete</a>
-                </button>
+                <form th:action="@{/deleteFood/{id}(id=${food.id})}" method="post">
+                  <button class="btn btn-neutral">
+                    <a th:href="@{/updateFood/{id}(id=${food.id})}" title="Edit">
+                      Edit
+                    </a>
+                  </button>
+                  <button type="submit" class="btn btn-error text-white" style="background-color: tomato">
+                    Delete
+                  </button>
+                </form>
               </td>
             </tr>
             </tbody>

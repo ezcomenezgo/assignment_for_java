@@ -51,17 +51,19 @@ After you run the application, following the steps below:
 ## Folder Structure
 
 - **Project's Instruction:** *wholesale_system/README.md*
-- **Food Products:** *wholesale_system/src/main/java/com/example/wholesale_system/food_product*
-- **Customers:** *wholesale_system/src/main/java/com/example/wholesale_system/customer*
-- **HTML:** *wholesale_system/src/main/resources*
-- **Database:** *wholesale_system/src/database/wholesale_system.db (The data is hardcoded, all the data will be prepared
+- **Food Products:** *wholesale_system/src/**main**/java/com/example/wholesale_system/food_product*
+- **Customers:** *wholesale_system/src/**main**/java/com/example/wholesale_system/customer*
+- **HTML:** *wholesale_system/src/**main**/resources*
+- **Database:** *wholesale_system/src/**database**/wholesale_system.db (The data is hardcoded, all the data will be
+  prepared
   in advance)*
-- **Unit tests:** *wholesale_system/src/test/java/com/example/wholesale_system*
+- **Unit tests:** *wholesale_system/src/**test**/java/com/example/wholesale_system*
+- **JavaDoc:** *wholesale_system/**target**/doc/index.html*
 
 ## Credits
 
 Thanks so much for Dr. Conor taught us the Java programme language, the concept of OOP and others knowledge about
-developing a project.
+developing a web application project.
 
 Also, thanks so much for the documentation of Spring, Springboot, Thymeleaf and TailwindCSS/daisyUI to let me learn how
 to do a basic full stack project.

@@ -214,7 +214,7 @@ public class WholesaleSystemApplication implements CommandLineRunner {
             foodProduct.setCategory(category);
             foodProduct.setPrice(price);
             foodProductService.saveFoodProduct(foodProduct);
-            System.out.println("added " + sku + " from database!");
+            System.out.println("added " + sku + " to database!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -5,10 +5,7 @@ package com.example.wholesale_system.food_product;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * controller of food product
@@ -57,7 +54,7 @@ public class FoodProductController {
      * @param id: specific food product to delete
      * @return: show the food product list after delete the food product
      */
-    @GetMapping("/deleteFood/{id}")
+    @PostMapping("/deleteFood/{id}")
     public String deleteFoodProduct(@PathVariable(value = "id") Integer id) {
         foodProductService.deleteFoodProduct(id);
         return "redirect:/foodList";

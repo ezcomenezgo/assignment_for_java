@@ -24,8 +24,7 @@ public class CustomerController {
     /**
      * go to all customers page
      *
-     * @param model:   add data of customers list to the interface
-     * @param keyword: when users want to search customer, the value they enter will store in this variable
+     * @param model: add data of customers list to the interface
      * @return: show the customer list
      */
     @GetMapping("/customerList")
@@ -74,7 +73,7 @@ public class CustomerController {
      * @param id: specific customer to delete
      * @return: show the customer list after delete the customer
      */
-    @GetMapping("/deleteCustomer/{id}")
+    @PostMapping("/deleteCustomer/{id}")
     public String deleteCustomer(@PathVariable(value = "id") Integer id) {
         customerService.deleteCustomer(id);
         return "redirect:/customerList";

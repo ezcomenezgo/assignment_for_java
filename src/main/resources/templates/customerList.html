@@ -45,12 +45,14 @@
               }"></td>
               <td th:text="${customer.getTelephoneNumber()}"></td>
               <td>
-                <button class="btn btn-neutral">
-                  <a th:href="@{/updateCustomer/{id}(id=${customer.id})}" title="Edit">Edit</a>
-                </button>
-                <button class="btn btn-error">
-                  <a th:href="@{/deleteCustomer/{id}(id=${customer.id})}" title="Delete">Delete</a>
-                </button>
+                <form th:action="@{/deleteCustomer/{id}(id=${customer.id})}" method="post">
+                  <button class="btn btn-neutral">
+                    <a th:href="@{/updateCustomer/{id}(id=${customer.id})}" title="Edit">Edit</a>
+                  </button>
+                  <button type="submit" class="btn btn-error" style="background-color: tomato">
+                    Delete
+                  </button>
+                </form>
               </td>
             </tr>
             </tbody>
